@@ -1,4 +1,8 @@
+import Link from "next/link";
+import clsx from "clsx";
+import { useRouter } from "next/router";
 export function SideMenu() {
+  const router = useRouter();
   return (
     <div className="h-screen  bg-white border border-r">
       <div className="h-28 grid content-center px-4 py-6 border border-b">
@@ -9,46 +13,82 @@ export function SideMenu() {
         />
       </div>
 
-      <ul className="menu  ">
+      <ul className="menu py-6 ">
         <li className="mb-6 px-6 rounded-sm ">
-          <a>
+          <Link href="/users">
             <picture>
               <img
-                src="https://s2.svgbox.net/octicons.svg?ic=people-bold&color=gray"
+                src={clsx(
+                  "https://s2.svgbox.net/octicons.svg?ic=people-bold&color=gray",
+                  {
+                    "https://s2.svgbox.net/octicons.svg?ic=people-bold&color=black":
+                      router.pathname === "/users",
+                  }
+                )}
                 alt="users"
                 width="20"
                 height="20"
               />
             </picture>
 
-            <h2 className="text-gray-500">users</h2>
-          </a>
+            <h2
+              className={clsx("text-gray-500", {
+                "text-black": router.pathname === "/users",
+              })}
+            >
+              users
+            </h2>
+          </Link>
         </li>
         <li className="mb-6 px-6 rounded-sm ">
-          <a>
+          <Link href="/stores">
             <picture>
               <img
-                src="https://s2.svgbox.net/hero-outline.svg?ic=folder&color=gray"
+                src={clsx(
+                  "https://s2.svgbox.net/hero-outline.svg?ic=folder&color=gray",
+                  {
+                    "https://s2.svgbox.net/hero-outline.svg?ic=folder&color=black":
+                      router.pathname === "/stores",
+                  }
+                )}
                 alt="stores's folder"
                 width="20"
                 height="20"
               />
             </picture>
-            <h2 className="text-gray-500">stores</h2>
-          </a>
+            <h2
+              className={clsx("text-gray-500", {
+                "text-black": router.pathname === "/stores",
+              })}
+            >
+              stores
+            </h2>
+          </Link>
         </li>
         <li className="mb-6 px-6 rounded-sm">
-          <a>
+          <Link href="/products">
             <picture>
               <img
-                src="https://s2.svgbox.net/hero-outline.svg?ic=folder&color=gray"
+                src={clsx(
+                  "https://s2.svgbox.net/hero-outline.svg?ic=folder&color=gray",
+                  {
+                    "https://s2.svgbox.net/hero-outline.svg?ic=folder&color=black":
+                      router.pathname === "/products",
+                  }
+                )}
                 alt="products's folder"
                 width="20"
                 height="20"
               />
             </picture>
-            <h2 className="text-gray-500">products</h2>
-          </a>
+            <h2
+              className={clsx("text-gray-500", {
+                "text-black": router.pathname === "/products",
+              })}
+            >
+              products
+            </h2>
+          </Link>
         </li>
       </ul>
       <div className=" flex justify-center items-center w-full ">
